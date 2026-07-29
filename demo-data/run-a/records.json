@@ -1,0 +1,10 @@
+{
+  "run_id": "expected",
+  "items_processed": 3,
+  "status": "success",
+  "records": [
+    { "id": 1, "value": "alpha" },
+    { "id": 2, "value": "beta" },
+    { "id": 3, "value": "gamma" }
+  ]
+}
