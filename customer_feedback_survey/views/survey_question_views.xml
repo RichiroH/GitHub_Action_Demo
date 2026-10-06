@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_feedback_question_list" model="ir.ui.view">
+        <field name="name">feedback.question.list</field>
+        <field name="model">feedback.question</field>
+        <field name="arch" type="xml">
+            <list string="Questions">
+                <field name="sequence" widget="handle"/>
+                <field name="survey_id"/>
+                <field name="name"/>
+                <field name="question_type"/>
+                <field name="required"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_feedback_question_form" model="ir.ui.view">
+        <field name="name">feedback.question.form</field>
+        <field name="model">feedback.question</field>
+        <field name="arch" type="xml">
+            <form string="Question">
+                <sheet>
+                    <group>
+                        <field name="survey_id"/>
+                        <field name="name"/>
+                        <field name="question_type"/>
+                        <field name="required"/>
+                        <field name="sequence"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_feedback_question" model="ir.actions.act_window">
+        <field name="name">Questions</field>
+        <field name="res_model">feedback.question</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_survey_questions" name="Questions" parent="menu_survey_root" action="action_feedback_question"/>
+</odoo>

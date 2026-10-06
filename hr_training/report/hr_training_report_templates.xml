@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_report_training_certificate" model="ir.actions.report">
+        <field name="name">Training Certificate</field>
+        <field name="model">hr.training.enrollment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_training.report_training_certificate_document</field>
+        <field name="report_file">hr_training.report_training_certificate_document</field>
+        <field name="print_report_name">'Certificate_%s' % (object.attendee_id.name or '').replace(' ', '_')</field>
+    </record>
+
+    <template id="report_training_certificate_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1 class="text-center">Certificate of Completion</h1>
+                    <p class="text-center mt-4">
+                        This certifies that <strong t-field="doc.attendee_id.name"/>
+                        has successfully completed the course
+                        <strong t-field="doc.course_id.name"/>
+                        with a score of <strong t-field="doc.score"/>%.
+                    </p>
+                    <p class="text-center mt-4">
+                        Date: <span t-field="doc.date_start"/>
+                    </p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

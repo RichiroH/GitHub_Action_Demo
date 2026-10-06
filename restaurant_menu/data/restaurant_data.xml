@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="dish_default_main" model="restaurant.dish">
+            <field name="name">Margherita Pizza</field>
+            <field name="category">main</field>
+            <field name="price">12.50</field>
+            <field name="vegetarian">True</field>
+        </record>
+    </data>
+</odoo>

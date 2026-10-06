@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="fleet_vehicle_demo_1" model="fleet.vehicle.tracker">
+            <field name="name">Delivery Van 01</field>
+            <field name="license_plate">VAN-001</field>
+            <field name="brand">Ford</field>
+            <field name="model">Transit</field>
+            <field name="year">2022</field>
+            <field name="fuel_type">diesel</field>
+            <field name="status">active</field>
+        </record>
+    </data>
+</odoo>

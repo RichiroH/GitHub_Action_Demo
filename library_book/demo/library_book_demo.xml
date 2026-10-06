@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="demo_book_1" model="library.book">
+        <field name="title">A Hitchhiker's Guide</field>
+        <field name="isbn">978-0000000011</field>
+        <field name="genre">fiction</field>
+        <field name="pages">320</field>
+    </record>
+    <record id="demo_book_2" model="library.book">
+        <field name="title">Modern Cosmology</field>
+        <field name="isbn">978-0000000012</field>
+        <field name="genre">science</field>
+        <field name="pages">540</field>
+    </record>
+</odoo>

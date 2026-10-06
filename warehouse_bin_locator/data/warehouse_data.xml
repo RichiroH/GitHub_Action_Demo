@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="zone_a" model="warehouse.zone">
+            <field name="name">Zone A</field>
+            <field name="code">A</field>
+        </record>
+        <record id="zone_b" model="warehouse.zone">
+            <field name="name">Zone B</field>
+            <field name="code">B</field>
+        </record>
+    </data>
+</odoo>

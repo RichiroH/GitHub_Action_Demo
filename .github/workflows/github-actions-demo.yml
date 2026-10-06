@@ -1,0 +1,45 @@
+# --- Workflow metadata -------------------------------------------------------
+# `name` is the workflow name shown in the GitHub Actions UI.
+name: GitHub Actions Demo
+# `run-name` is the per-run label; it interpolates the triggering actor so each
+# run shows up as "<user> is testing out GitHub Actions 🚀".
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# `on` defines the triggers. `[push]` means: run on every push to any branch.
+# (This is the default tutorial config; the real work happens in sync-folders.yml.)
+on: [push]
+
+# A workflow is made of one or more `jobs` that run in parallel by default.
+jobs:
+  # Job key. This is a free-form identifier (here: Explore-GitHub-Actions).
+  Explore-GitHub-Actions:
+    # The runner image to use. ubuntu-latest = a fresh GitHub-hosted Ubuntu VM.
+    runs-on: ubuntu-latest
+
+    # `steps` run sequentially within this job. Each step is either a shell
+    # command (`run:`) or an action (`uses:`).
+    steps:
+      # Steps without a `name` get an auto-generated name from their `run` text.
+      # These first three steps just echo context available in the `github`
+      # context object: event type, runner OS, branch ref, and repo slug.
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      # `uses` runs a published action. `actions/checkout@v6` clones this
+      # repository into the runner's working directory so later steps can read
+      # the files. Without this step, the runner would be empty.
+      - name: Check out repository code
+        uses: actions/checkout@v6
+
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+      # A multi-line script step (`run: |` block). It lists the contents of
+      # `github.workspace`, the directory the repo was checked out into.
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      # Final step reports the job's status (success/failure) via the `job`
+      # context. Useful as a sanity check that all previous steps completed.
+      - run: echo "🍏 This job's status is ${{ job.status }}."

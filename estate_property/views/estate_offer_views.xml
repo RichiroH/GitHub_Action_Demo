@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_estate_offer_list" model="ir.ui.view">
+        <field name="name">estate.offer.list</field>
+        <field name="model">estate.offer</field>
+        <field name="arch" type="xml">
+            <list string="Offers">
+                <field name="property_id"/>
+                <field name="partner_id"/>
+                <field name="price"/>
+                <field name="date_deadline"/>
+                <field name="status" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_estate_offer_form" model="ir.ui.view">
+        <field name="name">estate.offer.form</field>
+        <field name="model">estate.offer</field>
+        <field name="arch" type="xml">
+            <form string="Offer">
+                <sheet>
+                    <group>
+                        <field name="property_id"/>
+                        <field name="partner_id"/>
+                        <field name="price"/>
+                        <field name="validity"/>
+                        <field name="date_deadline"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_estate_offer" model="ir.actions.act_window">
+        <field name="name">Offers</field>
+        <field name="res_model">estate.offer</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_estate_offers" name="Offers" parent="menu_estate_root" action="action_estate_offer"/>
+</odoo>

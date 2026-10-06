@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_feedback_survey_respondent,feedback.survey.respondent,model_feedback_survey,group_survey_respondent,1,0,0,0
+access_feedback_survey_manager,feedback.survey.manager,model_feedback_survey,group_survey_manager,1,1,1,1
+access_feedback_question_respondent,feedback.question.respondent,model_feedback_question,group_survey_respondent,1,0,0,0
+access_feedback_question_manager,feedback.question.manager,model_feedback_question,group_survey_manager,1,1,1,1
+access_feedback_answer_respondent,feedback.answer.respondent,model_feedback_answer,group_survey_respondent,1,1,1,0
+access_feedback_answer_manager,feedback.answer.manager,model_feedback_answer,group_survey_manager,1,1,1,1
+access_survey_summary_wizard,survey.summary.wizard,model_survey_summary_wizard,group_survey_respondent,1,1,1,1

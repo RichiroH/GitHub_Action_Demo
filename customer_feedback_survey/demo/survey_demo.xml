@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="demo_survey_nps" model="feedback.survey">
+        <field name="name">NPS Survey</field>
+        <field name="state">open</field>
+    </record>
+    <record id="demo_question_nps" model="feedback.question">
+        <field name="survey_id" ref="demo_survey_nps"/>
+        <field name="name">How likely are you to recommend us?</field>
+        <field name="question_type">stars</field>
+    </record>
+</odoo>

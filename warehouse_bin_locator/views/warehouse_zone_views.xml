@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_warehouse_zone_list" model="ir.ui.view">
+        <field name="name">warehouse.zone.list</field>
+        <field name="model">warehouse.zone</field>
+        <field name="arch" type="xml">
+            <list string="Zones">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="bin_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_warehouse_zone_form" model="ir.ui.view">
+        <field name="name">warehouse.zone.form</field>
+        <field name="model">warehouse.zone</field>
+        <field name="arch" type="xml">
+            <form string="Zone">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+                    <notebook>
+                        <page string="Bins">
+                            <field name="bin_ids">
+                                <list>
+                                    <field name="code"/>
+                                    <field name="occupied"/>
+                                    <field name="free_space"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_warehouse_zone" model="ir.actions.act_window">
+        <field name="name">Zones</field>
+        <field name="res_model">warehouse.zone</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_warehouse_root" name="Bin Locator" web_icon="warehouse_bin_locator,static/description/icon.png"/>
+    <menuitem id="menu_warehouse_zones" name="Zones" parent="menu_warehouse_root" action="action_warehouse_zone"/>
+</odoo>

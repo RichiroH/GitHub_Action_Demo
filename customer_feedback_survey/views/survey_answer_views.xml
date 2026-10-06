@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_feedback_answer_list" model="ir.ui.view">
+        <field name="name">feedback.answer.list</field>
+        <field name="model">feedback.answer</field>
+        <field name="arch" type="xml">
+            <list string="Answers">
+                <field name="create_date"/>
+                <field name="survey_id"/>
+                <field name="question_id"/>
+                <field name="partner_id"/>
+                <field name="text_value"/>
+                <field name="star_value"/>
+                <field name="boolean_value"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_feedback_answer_form" model="ir.ui.view">
+        <field name="name">feedback.answer.form</field>
+        <field name="model">feedback.answer</field>
+        <field name="arch" type="xml">
+            <form string="Answer">
+                <sheet>
+                    <group>
+                        <field name="survey_id"/>
+                        <field name="question_id"/>
+                        <field name="partner_id"/>
+                        <field name="text_value"/>
+                        <field name="star_value"/>
+                        <field name="boolean_value"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_feedback_answer" model="ir.actions.act_window">
+        <field name="name">Answers</field>
+        <field name="res_model">feedback.answer</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_survey_answers" name="Answers" parent="menu_survey_root" action="action_feedback_answer"/>
+</odoo>

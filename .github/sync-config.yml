@@ -1,0 +1,24 @@
+# Mapping of parent-repo folders to child repos.
+#
+# On push to main, only children whose subscribed folders changed get synced.
+# Each child authenticates with its own SSH deploy key. The name of the parent
+# repo secret holding that key is given in `key_env`.
+#
+# To add a child repo:
+#   1. Generate a keypair: ssh-keygen -t ed25519 -f child_<name>_key -N ""
+#   2. Add the PUBLIC key as a write deploy key in the child repo.
+#   3. Add the PRIVATE key as a parent-repo Actions secret named SYNC_KEY_<NAME>.
+#   4. Add an entry here and a matching `SYNC_KEY_<NAME>` env line in the workflow.
+
+children:
+  - repo: RichiroH/customer_feedback_survey
+    branch: main                       # optional; defaults to main
+    key_env: SYNC_KEY_CUSTOMER_FEEDBACK_SURVEY
+    folders:
+      - customer_feedback_survey
+
+  - repo: RichiroH/estate_and_library
+    key_env: SYNC_KEY_ESTATE_AND_LIBRARY
+    folders:
+      - estate_property
+      - library_book

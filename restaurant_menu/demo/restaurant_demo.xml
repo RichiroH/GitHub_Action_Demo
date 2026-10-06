@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="demo_dish_pasta" model="restaurant.dish">
+        <field name="name">Carbonara</field>
+        <field name="category">main</field>
+        <field name="price">14.00</field>
+        <field name="allergens">Gluten, Egg, Dairy</field>
+    </record>
+    <record id="demo_dish_tiramisu" model="restaurant.dish">
+        <field name="name">Tiramisu</field>
+        <field name="category">dessert</field>
+        <field name="price">6.50</field>
+    </record>
+</odoo>

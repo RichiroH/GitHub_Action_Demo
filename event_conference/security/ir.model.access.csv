@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_event_conference_organizer,event.conference.organizer,model_event_conference,group_event_organizer,1,1,1,0
+access_event_conference_manager,event.conference.manager,model_event_conference,group_event_manager,1,1,1,1
+access_event_session_organizer,event.session.organizer,model_event_session,group_event_organizer,1,1,1,0
+access_event_session_manager,event.session.manager,model_event_session,group_event_manager,1,1,1,1

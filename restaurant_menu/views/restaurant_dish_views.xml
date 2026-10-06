@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_restaurant_dish_list" model="ir.ui.view">
+        <field name="name">restaurant.dish.list</field>
+        <field name="model">restaurant.dish</field>
+        <field name="arch" type="xml">
+            <list string="Dishes">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="price"/>
+                <field name="vegetarian" optional="show"/>
+                <field name="spicy" optional="hide"/>
+                <field name="available" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_restaurant_dish_form" model="ir.ui.view">
+        <field name="name">restaurant.dish.form</field>
+        <field name="model">restaurant.dish</field>
+        <field name="arch" type="xml">
+            <form string="Dish">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="category"/>
+                            <field name="price"/>
+                            <field name="currency_id"/>
+                        </group>
+                        <group>
+                            <field name="vegetarian"/>
+                            <field name="spicy"/>
+                            <field name="available"/>
+                            <field name="allergens"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Menus">
+                            <field name="menu_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_restaurant_dish_search" model="ir.ui.view">
+        <field name="name">restaurant.dish.search</field>
+        <field name="model">restaurant.dish</field>
+        <field name="arch" type="xml">
+            <search string="Search Dishes">
+                <field name="name"/>
+                <filter string="Available" name="available" domain="[('available','=',True)]"/>
+                <filter string="Vegetarian" name="veg" domain="[('vegetarian','=',True)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Category" name="cat" context="{'group_by': 'category'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_restaurant_dish" model="ir.actions.act_window">
+        <field name="name">Dishes</field>
+        <field name="res_model">restaurant.dish</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new dish to your menu
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_restaurant_root" name="Restaurant" web_icon="restaurant_menu,static/description/icon.png"/>
+    <menuitem id="menu_restaurant_dishes" name="Dishes" parent="menu_restaurant_root" action="action_restaurant_dish"/>
+</odoo>

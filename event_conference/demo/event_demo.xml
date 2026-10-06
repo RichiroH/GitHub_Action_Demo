@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="demo_conference_1" model="event.conference">
+        <field name="name">DevOps World</field>
+        <field name="location">Online</field>
+        <field name="capacity">1000</field>
+        <field name="state">draft</field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="demo_vehicle_2" model="fleet.vehicle.tracker">
+        <field name="name">Sales Sedan</field>
+        <field name="license_plate">SAL-002</field>
+        <field name="brand">Tesla</field>
+        <field name="model">Model 3</field>
+        <field name="year">2023</field>
+        <field name="fuel_type">electric</field>
+        <field name="odometer">12000</field>
+    </record>
+</odoo>

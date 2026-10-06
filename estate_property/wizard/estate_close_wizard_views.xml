@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_estate_close_wizard_form" model="ir.ui.view">
+        <field name="name">estate.close.wizard.form</field>
+        <field name="model">estate.close.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Close Property">
+                <group>
+                    <field name="property_id" readonly="1"/>
+                    <field name="final_note"/>
+                </group>
+                <footer>
+                    <button name="action_confirm_close" string="Confirm" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

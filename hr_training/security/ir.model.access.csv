@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_training_course_trainee,hr.training.course.trainee,model_hr_training_course,group_training_trainee,1,0,0,0
+access_hr_training_course_manager,hr.training.course.manager,model_hr_training_course,group_training_manager,1,1,1,1
+access_hr_training_enrollment_trainee,hr.training.enrollment.trainee,model_hr_training_enrollment,group_training_trainee,1,1,1,0
+access_hr_training_enrollment_manager,hr.training.enrollment.manager,model_hr_training_enrollment,group_training_manager,1,1,1,1

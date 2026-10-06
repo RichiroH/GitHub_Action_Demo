@@ -1,0 +1,62 @@
+# --- Workflow metadata -------------------------------------------------------
+# Name shown in the Actions UI for this sync workflow.
+name: Sync folders to child repos
+
+# --- Triggers ----------------------------------------------------------------
+# Run only on pushes to the `main` branch. PRs, tags, and other branches are
+# ignored so we don't accidentally push half-baked changes to child repos.
+on:
+  push:
+    branches: [main]
+
+# --- Permissions -------------------------------------------------------------
+# Least-privilege for the auto-provided GITHUB_TOKEN. We only need to read the
+# parent repo's contents (the checkout step). Child-repo pushes are done with
+# per-child SSH deploy keys, NOT the GITHUB_TOKEN, so we don't need write here.
+permissions:
+  contents: read
+
+# --- Jobs --------------------------------------------------------------------
+jobs:
+  sync:
+    # Fresh GitHub-hosted Ubuntu runner.
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Clone this parent repo onto the runner.
+      #    `fetch-depth: 0` fetches the FULL git history (not a shallow clone),
+      #    which is required because the sync script needs to `git diff`
+      #    between the previous commit (GITHUB_BEFORE) and the new one
+      #    (GITHUB_AFTER) to know which folders changed.
+      - name: Checkout parent repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # need history to diff before/after
+
+      # 2) Provide a Python interpreter for the sync script.
+      #    `3.x` resolves to the latest 3.x at run time.
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # 3) The sync script imports `yaml` to parse sync-config.yml, so we need
+      #    PyYAML available in this ephemeral runner environment.
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      # 4) The actual sync. The `env:` block exposes:
+      #      - GITHUB_BEFORE / GITHUB_AFTER: the SHAs bracketing this push,
+      #        used by the script to compute changed top-level folders.
+      #      - SYNC_KEY_*: the per-child SSH deploy keys stored as repo secrets.
+      #        Each name MUST match the `key_env` field in sync-config.yml so
+      #        the script can look up the right key for each child repo.
+      - name: Sync subscribed folders to child repos
+        env:
+          GITHUB_BEFORE: ${{ github.event.before }}
+          GITHUB_AFTER: ${{ github.event.after }}
+          # One entry per child repo, matching `key_env` in .github/sync-config.yml.
+          SYNC_KEY_CUSTOMER_FEEDBACK_SURVEY: ${{ secrets.SYNC_KEY_CUSTOMER_FEEDBACK_SURVEY }}
+          SYNC_KEY_ESTATE_AND_LIBRARY: ${{ secrets.SYNC_KEY_ESTATE_AND_LIBRARY }}
+        # Runs the helper script that does the diff → clone → rsync → commit → push.
+        run: python .github/scripts/sync.py

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="demo_course_python" model="hr.training.course">
+        <field name="name">Advanced Python</field>
+        <field name="code">PY-301</field>
+        <field name="duration_hours">24.0</field>
+        <field name="level">advanced</field>
+    </record>
+</odoo>

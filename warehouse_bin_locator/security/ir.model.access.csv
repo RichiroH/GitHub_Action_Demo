@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_warehouse_zone_worker,warehouse.zone.worker,model_warehouse_zone,group_warehouse_worker,1,0,0,0
+access_warehouse_zone_manager,warehouse.zone.manager,model_warehouse_zone,group_warehouse_manager,1,1,1,1
+access_warehouse_bin_worker,warehouse.bin.worker,model_warehouse_bin,group_warehouse_worker,1,1,0,0
+access_warehouse_bin_manager,warehouse.bin.manager,model_warehouse_bin,group_warehouse_manager,1,1,1,1

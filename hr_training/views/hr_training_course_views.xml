@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_hr_training_course_list" model="ir.ui.view">
+        <field name="name">hr.training.course.list</field>
+        <field name="model">hr.training.course</field>
+        <field name="arch" type="xml">
+            <list string="Courses">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="level" widget="badge"/>
+                <field name="duration_hours"/>
+                <field name="trainer_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hr_training_course_form" model="ir.ui.view">
+        <field name="name">hr.training.course.form</field>
+        <field name="model">hr.training.course</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="level"/>
+                        </group>
+                        <group>
+                            <field name="duration_hours"/>
+                            <field name="trainer_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Enrollments">
+                            <field name="enrollment_ids">
+                                <list>
+                                    <field name="attendee_id"/>
+                                    <field name="date_start"/>
+                                    <field name="score"/>
+                                    <field name="state" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_training_course_search" model="ir.ui.view">
+        <field name="name">hr.training.course.search</field>
+        <field name="model">hr.training.course</field>
+        <field name="arch" type="xml">
+            <search string="Search Courses">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="trainer_id"/>
+                <group expand="0" string="Group By">
+                    <filter string="Level" name="level" context="{'group_by': 'level'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_training_course" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">hr.training.course</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new training course
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_hr_training_root" name="Training" web_icon="hr_training,static/description/icon.png"/>
+    <menuitem id="menu_hr_training_courses" name="Courses" parent="menu_hr_training_root" action="action_hr_training_course"/>
+</odoo>

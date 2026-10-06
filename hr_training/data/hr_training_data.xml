@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="course_onboarding" model="hr.training.course">
+            <field name="name">Odoo Onboarding</field>
+            <field name="code">OBS-101</field>
+            <field name="duration_hours">8.0</field>
+            <field name="level">beginner</field>
+        </record>
+    </data>
+</odoo>

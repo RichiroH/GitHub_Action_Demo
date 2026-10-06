@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="demo_property_1" model="estate.property">
+        <field name="name">Sunny Villa</field>
+        <field name="expected_price">350000</field>
+        <field name="bedrooms">4</field>
+        <field name="property_type_id" ref="estate_type_house"/>
+        <field name="garden">True</field>
+        <field name="garden_orientation">south</field>
+    </record>
+    <record id="demo_property_2" model="estate.property">
+        <field name="name">Downtown Loft</field>
+        <field name="expected_price">180000</field>
+        <field name="bedrooms">2</field>
+        <field name="property_type_id" ref="estate_type_apartment"/>
+    </record>
+</odoo>

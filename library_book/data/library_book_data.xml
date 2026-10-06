@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="library_book_genre_fiction" model="library.book">
+            <field name="title">The Art of Odoo</field>
+            <field name="isbn">978-0000000001</field>
+            <field name="genre">fiction</field>
+            <field name="state">available</field>
+        </record>
+    </data>
+</odoo>

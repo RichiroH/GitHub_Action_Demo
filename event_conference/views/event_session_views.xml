@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_event_session_list" model="ir.ui.view">
+        <field name="name">event.session.list</field>
+        <field name="model">event.session</field>
+        <field name="arch" type="xml">
+            <list string="Sessions">
+                <field name="name"/>
+                <field name="conference_id"/>
+                <field name="speaker_id"/>
+                <field name="start_datetime"/>
+                <field name="duration"/>
+                <field name="seats_available"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_event_session_form" model="ir.ui.view">
+        <field name="name">event.session.form</field>
+        <field name="model">event.session</field>
+        <field name="arch" type="xml">
+            <form string="Session">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="conference_id"/>
+                        <field name="speaker_id"/>
+                    </group>
+                    <group>
+                        <field name="start_datetime"/>
+                        <field name="end_datetime"/>
+                        <field name="duration"/>
+                    </group>
+                    <group>
+                        <field name="seats_max"/>
+                        <field name="seats_taken"/>
+                        <field name="seats_available"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_event_session" model="ir.actions.act_window">
+        <field name="name">Sessions</field>
+        <field name="res_model">event.session</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_event_sessions" name="Sessions" parent="menu_event_root" action="action_event_session"/>
+</odoo>

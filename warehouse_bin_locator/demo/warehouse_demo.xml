@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="demo_bin_a1" model="warehouse.bin">
+        <field name="code">A-01</field>
+        <field name="barcode">100001</field>
+        <field name="zone_id" ref="zone_a"/>
+        <field name="capacity">120</field>
+        <field name="occupied">45</field>
+    </record>
+    <record id="demo_bin_b2" model="warehouse.bin">
+        <field name="code">B-02</field>
+        <field name="barcode">100002</field>
+        <field name="zone_id" ref="zone_b"/>
+        <field name="occupied">0</field>
+    </record>
+</odoo>

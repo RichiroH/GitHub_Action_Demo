@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="event_conference_seed" model="event.conference">
+            <field name="name">Odoo Days 2025</field>
+            <field name="location">Ghent, Belgium</field>
+            <field name="capacity">500</field>
+            <field name="state">confirmed</field>
+        </record>
+    </data>
+</odoo>
